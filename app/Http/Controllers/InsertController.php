@@ -11,7 +11,14 @@ use App\Sekolah;
 use App\Rekap;
 class InsertController extends Controller
 {
-    //
+    /**
+     * Developer : Rizal Khilman
+     * Facebook : http://fb.me/rizal.ofdraw
+     * Instagram : http://instagram.com/rz.khilman
+     * Website : http://www.khilman.com
+     * Email : rizal.drawrs@gmail.com
+     * Last Update: 9 Juni 2017
+     */
     public function insertGuru(Request $request){
 
         $data_guru = new DataGuru;
@@ -28,10 +35,11 @@ class InsertController extends Controller
             $request->request->add(['foto' => $fotoName]);
         }
         // format tanggal
+        $tgl_lahir = toDate($request->tgl_lahir);
         $tgl_surat = toDate($request->tgl_surat);
         $tmt_kerja = toDate($request->tmt_kerja);
         // append
-        $request->request->add(['tgl_surat' => $tgl_surat, 'tmt_kerja' => $tmt_kerja]);
+        $request->request->add(['tgl_surat' => $tgl_surat, 'tmt_kerja' => $tmt_kerja, 'tgl_lahir' => $tgl_lahir]);
         // tampung data dari form
         $data = $request->all();
         if ($guru_rs = $guru->create($data)) { // nambahin ke table guru

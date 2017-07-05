@@ -10,12 +10,21 @@
                             <td colspan="3"  align="center" style="border: none;">
                                 <div class="pull-left">
                                     <button class="btn btn-primary btn-sm" onclick="window.history.back()"><i class="fa fa-arrow-left"></i> kembali</button>
+                                    <a href="<?php echo e(url('print-data?type_cetak=data_guru&tahun='. $guru->tahun .'&id_guru='. $guru->guru_id)); ?>" class="btn btn-default"><i class="fa fa-print"></i> cetak</a>
                                 </div>
                                 <div class="pull-right">
                                     <a href="<?php echo e(url('ubah-guru/' . $guru->id)); ?>" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i> ubah</a>
-                                    <a onclick="return confirm('Hapus Data Ini?')"  href="<?php echo e(url('hapus-guru/' . $guru->id)); ?>" title="Hapus" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> hapus</a>
+                                    <a onclick="return confirm('Hapus Data Ini?')"  href="<?php echo e(route('hapus_data_guru', ['id' => $guru->id])); ?>" title="Hapus" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> hapus</a>
+                                    
                                 </div>
-                                <img src="<?php echo e(userPhoto($guru->detail->foto)); ?>" alt="" height="400px">
+                                <img src="<?php echo e(url(userPhoto($guru->detail->foto))); ?>" alt="" height="200px">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" align="right">
+                                <b>Data tahun </b> : 
+                                <b><i><?php echo e($guru->tahun); ?></i></b>
+                                
                             </td>
                         </tr>
                         <tr>
@@ -35,6 +44,16 @@
                             <td>:</td>
                             <td>
                                 <?php echo e($guru->detail->jk); ?>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Tanggal Lahir
+                            </td>
+                            <td>:</td>
+                            <td>
+                                <?php echo e($guru->detail->tgl_lahir); ?>
 
                             </td>
                         </tr>

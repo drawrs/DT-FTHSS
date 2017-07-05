@@ -11,7 +11,14 @@ use App\Guru;
 use App\Rekap;
 class MainController extends Controller
 {
-    //
+    /**
+     * Developer : Rizal Khilman
+     * Facebook : http://fb.me/rizal.ofdraw
+     * Instagram : http://instagram.com/rz.khilman
+     * Website : http://www.khilman.com
+     * Email : rizal.drawrs@gmail.com
+     * Last Update: 9 Juni 2017
+     */
     public function beranda(){
         return view('beranda');
     }
@@ -137,8 +144,24 @@ class MainController extends Controller
         $guru = new DataGuru;
         return view('rekap.data-sekolah', compact('data', 'guru', 'tahun'));
     }
+    public function hapus_data_guru($id){
+        $data_guru = DataGuru::find($id);
+        $guru = Guru::find($data_guru->guru_id);
+        if (is_null($data_guru) || is_null($guru)) {
+            return redirect('/data-guru')->with(['msg' => "Data tidak ditemukan!", 'type' => "danger"]);
+        }
+        if ($guru->delete()) {
+            $data_guru->delete();
+            $msg = "Berhasil dihapus";
+            $type = "success";
+        } else {
+            $msg = "gagal menghapus";
+            $type = "danger";
+        }
+         return redirect()->back()->with(['msg' => $msg, 'type' => $type]);
+    }
     public function hapus_guru($id){
-        $guru = DataGuru::find($id);
+        $guru = Guru::find($id);
         if (is_null($guru)) {
             return redirect('/data-guru')->with(['msg' => "Data tidak ditemukan!", 'type' => "danger"]);
         }

@@ -56,6 +56,15 @@
                         </tr>
                         <tr>
                             <td>
+                                Tanggal Lahir
+                            </td>
+                            <td>:</td>
+                            <td>
+                            <input type="text" name="tgl_lahir" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
                                 Tempat Lahir
                             </td>
                             <td>:</td>

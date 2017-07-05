@@ -6,7 +6,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">TABLE REKAPITULASI : <select name="" id="pilihTahun" class="form-control" style="display: inline;width: 30%">
                                 <option value="">-- Pilih tahun -- </option>
-                                <?php for($i= date("Y"); $i >= (date("Y") - 30) ; $i--): ?>
+                                <?php for($i= date("Y")+1; $i >= (date("Y") - 30) ; $i--): ?>
                                 <option value="<?php echo e($i); ?>" <?php echo e(autoSelect(Request::input('tahun'), $i)); ?>><?php echo e($i); ?></option>
                                 <?php endfor; ?>
                               </select>

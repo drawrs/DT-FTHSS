@@ -12,12 +12,13 @@
                             <td colspan="3"  align="center" style="border: none;">
                                 <div class="pull-left">
                                     <button class="btn btn-primary btn-sm" onclick="window.history.back()"><i class="fa fa-arrow-left"></i> kembali</button>
+                                    <a href="{{ url('print-data?type_cetak=data_guru&tahun='. $guru->tahun .'&id_guru='. $guru->guru_id) }}" class="btn btn-default"><i class="fa fa-print"></i> cetak</a>
                                 </div>
                                 <div class="pull-right">
                                     <button class="btn btn-success btn-sm" id="btnUbah"><i class="fa fa-save"></i> simpan perubahan</button>
                                     <!-- <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> hapus</button> -->
                                 </div>
-                                <a href="{{userPhoto($guru->detail->foto)}}"><img src="{{userPhoto($guru->detail->foto)}}" alt=""  height="200px" title="{{$guru->detail->nama}}"></a>
+                                <a href="{{ url(userPhoto($guru->detail->foto)) }}"><img src="{{userPhoto($guru->detail->foto)}}" alt=""  height="200px" title="{{$guru->detail->nama}}"></a>
                             </td>
                         </tr>
                         <!-- Form open -->
@@ -62,6 +63,15 @@
                             <td>
                             <input type="radio" value="L" name="jk" {{autoChecked($guru->detail->jk, 'L')}}> Laki-laki
                             <input type="radio" value="P" name="jk" {{autoChecked($guru->detail->jk, 'P')}}> Perempuan
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Tanggal Lahir
+                            </td>
+                            <td>:</td>
+                            <td>
+                            <input type="text" name="tgl_lahir" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" value="{{readDate($guru->detail->tgl_lahir)}}" data-mask>
                             </td>
                         </tr>
                         <tr>

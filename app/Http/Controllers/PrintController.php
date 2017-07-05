@@ -11,7 +11,14 @@ use App\Sekolah;
 use App\Rekap;
 class PrintController extends Controller
 {
-    //
+    /**
+     * Developer : Rizal Khilman
+     * Facebook : http://fb.me/rizal.ofdraw
+     * Instagram : http://instagram.com/rz.khilman
+     * Website : http://www.khilman.com
+     * Email : rizal.drawrs@gmail.com
+     * Last Update: 9 Juni 2017
+     */
     public function pilihPrint(){
         return view('print.pilih');
     }
@@ -54,15 +61,17 @@ class PrintController extends Controller
                 $query->orderBy('tingkat', 'desc');
             }]);
             $guru = new DataGuru;
-            return view('print.data-penerima', compact('data', 'guru', 'tahun'));
+            return view('print.data-penerima', compact('data', 'guru', 'tahun', 'rekap'));
         } elseif ($request->type_cetak == 'data_guru') {
             $guru = new DataGuru;
             $sklh = NULL;
             $tahun = ($request->tahun) ? $request->tahun: date("Y");
-            /*if ($request->has('sklh_id')) {
-                $guru = Guru::where('sekolah_id', $request->sklh_id);
-                $sklh = Sekolah::find($request->sklh_id);
-            }*/
+            if ($request->has('sklh_id')) {
+                if ($request->sklh_id !== 'all') {
+                    $guru = $guru->where('sekolah_id', $request->sklh_id);
+                    $sklh = Sekolah::find($request->sklh_id);
+                }
+            }
             $no  = 0;
             $data = $guru;
             if ($request->has('tnkt') && $request->tnkt !== 'all') {
@@ -70,10 +79,13 @@ class PrintController extends Controller
                     $e->where('tingkat', $request->tnkt);
                 });
             }
+            if ($request->has('id_guru')) {
+                $data = $guru->where('guru_id', $request->id_guru);
+            }
             $data_guru = $data->where('tahun', $tahun)
-                            ->whereHas('detail', function($e){
-                                $e->where('status_guru', 'aktif');
-                            })
+                                ->whereHas('detail', function($e){
+                                    $e->where('status_guru', 'aktif');
+                                })
                             ->join('guru','data_guru.guru_id', '=', 'guru.id')
                             ->orderBy('guru.nama', 'asc')
                             ->paginate(10);

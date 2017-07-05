@@ -21,7 +21,7 @@
                             <br>
                             Pilih Tahun : <select name="" id="tahun" class="form-control">
                                 <option value="">-- Pilih tahun -- </option>
-                                <?php for($i= date("Y"); $i >= (date("Y") - 30) ; $i--): ?>
+                                <?php for($i= date("Y")+1; $i >= (date("Y") - 30) ; $i--): ?>
                                 <option value="<?php echo e($i); ?>" <?php echo e(autoSelect(Request::input('tahun'), $i)); ?>><?php echo e($i); ?></option>
                                 <?php endfor; ?>
                               </select>

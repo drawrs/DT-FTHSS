@@ -22,7 +22,7 @@
                             <br>
                             Pilih Tahun : <select name="" id="tahun" class="form-control">
                                 <option value="">-- Pilih tahun -- </option>
-                                @for($i= date("Y"); $i >= (date("Y") - 30) ; $i--)
+                                @for($i= date("Y")+1; $i >= (date("Y") - 30) ; $i--)
                                 <option value="{{$i}}" {{autoSelect(Request::input('tahun'), $i)}}>{{$i}}</option>
                                 @endfor
                               </select>

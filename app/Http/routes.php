@@ -1,5 +1,12 @@
 <?php
-
+/**
+ * Developer : Rizal Khilman
+ * Facebook : http://fb.me/rizal.ofdraw
+ * Instagram : http://instagram.com/rz.khilman
+ * Website : http://www.khilman.com
+ * Email : rizal.drawrs@gmail.com
+ * Last Update: 9 Juni 2017
+ */
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -57,9 +64,13 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/tambah-guru', [
         'uses' => 'MainController@tambah_guru',
         'as' => 'tambah_guru']);
-    Route::get('/hapus-guru/{id}', [
-        'uses' => 'MainController@hapus_guru',
-        'as' => 'hapus_guru']);
+    Route::get('/hapus-data-guru/{id}', [
+        'uses' => 'MainController@hapus_data_guru',
+        'as' => 'hapus_data_guru']);
+    
+    Route::get('/hapus-data/{id}', [
+        'uses' => 'MainController@hapus_data_guru',
+        'as' => 'hapus_guru.asli']);
 
     // ubah sekolah
     Route::get('/ubah-sekolah/{id}', [

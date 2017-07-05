@@ -68,7 +68,8 @@
                                <td><?php echo e($guru->sekolah->nama); ?></td>
                                <td>
                                    <a href="<?php echo e(url('ubah-guru/' . $guru->id)); ?>" class="btn btn-primary btn-xs"  data-toggle="tooltip" data-placement="left" title="Klik untuk menubah data"><i class="fa fa-pencil"></i></a>
-                                   <a class="btn btn-danger btn-xs"  data-toggle="tooltip" data-placement="top" title="Hapus data" onclick="return confirm('Hapus Data Ini?')"  href="<?php echo e(url('hapus-guru/' . $guru->id)); ?>" title="Hapus"><i class="fa fa-trash"></i></a>
+                                   
+                                   <a class="btn btn-danger btn-xs"  data-toggle="tooltip" data-placement="top" title="Hapus data" onclick="return confirm('Hapus Data Ini?')"  href="<?php echo e(route('hapus_data_guru', ['id' => $guru->id])); ?>" title="Hapus"><i class="fa fa-trash"></i></a>
                                    <button href="" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="right" title="Ubah status menjadi Aktif/Nonaktif/Mutasi" onclick="ubahModal('<?php echo e($guru->guru_id); ?>')"><i class="fa fa-external-link"></i></button>
                                </td>
                            </tr>

@@ -49,6 +49,9 @@
         <input type="text" placeholder="Nama" id="inp_nama">
         <input type="text" placeholder="Titel"  id="inp_titel">
         <input type="text" placeholder="NIP"  id="inp_nip">
+        <br><br>
+        <input type="text" placeholder="Tanggal"  id="inp_tgl">
+        <input type="text" placeholder="Tahun"  id="inp_thn">
     </div>
 </div>
 <div class="print-area">
@@ -57,7 +60,7 @@
         REKAPITULASI DATA PENGAJUAN <br>
         BANTUAN HIBAH PADA SEKOLAH SWASTA <br>
         BAGI PENDIDIK DAN TENAGA KEPENDIDIKAN <br>
-        TAHUN ANGGARAN 2017 <br>
+        TAHUN ANGGARAN <span id="tahun"><?php echo e(Request::get('tahun')); ?></span> <br>
     </caption>
     <thead>
         <tr>
@@ -114,7 +117,7 @@ $bulan = array('', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli
 $bln = date('n');
 
  ?>
-<p>Cirebon, <?= date("d ") . $bulan[$bln] .date(" Y") ?></p>
+<p>Cirebon, <span id="tanggal"><?= date("d ") . $bulan[$bln] .date(" Y") ?></span></p>
 <p><span id="dinas">Kepala Dinas Pendidikan Kota Cirebon</span></p>
 <br><br><br><br><br><br><br><br>
 <br><br><br><br><br><br><br><br>
@@ -142,6 +145,14 @@ $(document).ready(function() {
     $('#inp_nip').keydown(function(event) {
         /* Act on the event */
         $('#nip').text($(this).val());
+    });
+    $('#inp_tgl').change(function(event) {
+        /* Act on the event */
+        $('#tanggal').text($(this).val());
+    });
+    $('#inp_thn').change(function(event) {
+        /* Act on the event */
+        $('#tahun').text($(this).val());
     });
 });
 </script>

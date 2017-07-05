@@ -12,16 +12,24 @@ use App\Tugas;
 use App\Rekap;
 class UpdateController extends Controller
 {
-    //
+    /**
+     * Developer : Rizal Khilman
+     * Facebook : http://fb.me/rizal.ofdraw
+     * Instagram : http://instagram.com/rz.khilman
+     * Website : http://www.khilman.com
+     * Email : rizal.drawrs@gmail.com
+     * Last Update: 9 Juni 2017
+     */
     public function updateGuru(Request $request){
         $data_guru = DataGuru::find($request->id);
         $guru = new Guru;
         // olah tanggal
          // format tanggal
+        $tgl_lahir = toDate($request->tgl_lahir);
         $tgl_surat = toDate($request->tgl_surat);
         $tmt_kerja = toDate($request->tmt_kerja);
         // append
-        $request->request->add(['tgl_surat' => $tgl_surat, 'tmt_kerja' => $tmt_kerja]);
+        $request->request->add(['tgl_surat' => $tgl_surat, 'tmt_kerja' => $tmt_kerja, 'tgl_lahir' => $tgl_lahir]);
         // default foto name
         $fotoName = 'guru.png';
         

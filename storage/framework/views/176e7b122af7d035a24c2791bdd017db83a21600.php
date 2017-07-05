@@ -103,7 +103,7 @@
                 
                 <?php if(Auth::guest()): ?>
                     <li><a href="<?php echo e(url('/login')); ?>">Masuk</a></li>
-                    <li><a href="<?php echo e(url('/register')); ?>">Daftar</a></li>
+                    <!-- <li><a href="<?php echo e(url('/register')); ?>">Daftar</a></li> -->
                 <?php else: ?>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
